@@ -50,6 +50,7 @@ public class Robot extends TimedRobot {
     public static triangle triangle;
     public static pistons pistons;
     public static limelight limelight;
+    public static TongueSubsystem tongueSubsystem = new TongueSubsystem();
     
     public static DriverStation ds = DriverStation.getInstance();  //this is to get value from driver station
     
@@ -69,7 +70,11 @@ public class Robot extends TimedRobot {
         triangle = new triangle();
         pistons = new pistons();
         limelight = new limelight();  //this is camera
+        
         CameraServer.getInstance().startAutomaticCapture();
+        SmartDashboard.putNumber("Arm Position", Robot.foot.getFootPosition());
+
+
         //i making a comment
 
         DriverStation.Alliance a = Alliance.Blue;  //enum
@@ -94,6 +99,12 @@ public class Robot extends TimedRobot {
         SmartDashboard.putData("Auto mode", chooser);
     }
 
+    @Override
+    public void robotPeriodic() {
+    SmartDashboard.putNumber("Arm Position", Robot.foot.getFootPosition());
+    SmartDashboard.putBoolean("Foot Limit", Robot.foot.isReverseLimit());
+    
+    }
     /**
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
