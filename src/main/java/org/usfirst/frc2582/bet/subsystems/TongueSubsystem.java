@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class TongueSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private DoubleSolenoid toungueSolenoid = new DoubleSolenoid(2, 1);
+  private DoubleSolenoid toungueSolenoid = new DoubleSolenoid(0, 2, 1);
 
   @Override
   public void initDefaultCommand() {
