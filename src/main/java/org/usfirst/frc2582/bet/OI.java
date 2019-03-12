@@ -64,7 +64,10 @@ public class OI {
     public JoystickButton button6;
     public JoystickButton button7;
     public JoystickButton button8;
+    public JoystickButton button9;
+    public JoystickButton button10;
     public JoystickButton snap;
+    public JoystickButton manFoot;
 
 
 
@@ -89,24 +92,36 @@ public class OI {
         button3.whileHeld(new push());
 
         button4 = new JoystickButton(gamepad, 4);
-        button4.whileHeld(new intake());
+        button4.whileHeld(new AutoShoot());
     
         button5 = new JoystickButton(gamepad, 5);
-        button5.whileHeld(new outtake());
+        button5.whileHeld(new intake());
 
         button6 = new JoystickButton(gamepad, 6);
-        button6.whileHeld(new jump());
+        button6.whileHeld(new outtake());
 
+        //lip buttons
         button7 = new JoystickButton(gamepad, 7);
-        button7.whenPressed(new AutoShoot());
+        button7.whenPressed(new TongueInCommand());
 
         button8 = new JoystickButton(gamepad, 8);
-        button8.whenPressed(new AutoBox());
+        button8.whenPressed(new TongueOutCommand());
         //button8.cancelWhenActive(new AutoBox());
 
+        button9 = new JoystickButton(gamepad, 9);
+        button9.whenPressed(new MotionMagicClimbCommand());
+
+        button10 = new JoystickButton(gamepad, 10);
+        button10.whenPressed(new AutoBox());
+
+
+        //joystic buttons
         snap = new JoystickButton(joy, 1);
         snap.whileHeld(new SnapAndLock());
 
+        manFoot = new JoystickButton(joy, 7);
+        manFoot.whileHeld(new jump());
+        
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("joydrive", new joydrive());

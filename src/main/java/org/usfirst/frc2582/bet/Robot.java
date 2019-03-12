@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
     public static triangle triangle;
     public static pistons pistons;
     public static limelight limelight;
-    public static TongueSubsystem tongueSubsystem = new TongueSubsystem();
+    public static TongueSubsystem tongueSubsystem;
     
     public static DriverStation ds = DriverStation.getInstance();  //this is to get value from driver station
     
@@ -70,6 +70,7 @@ public class Robot extends TimedRobot {
         triangle = new triangle();
         pistons = new pistons();
         limelight = new limelight();  //this is camera
+        tongueSubsystem = new TongueSubsystem();
         
         CameraServer.getInstance().startAutomaticCapture();
         SmartDashboard.putNumber("Arm Position", Robot.foot.getFootPosition());
