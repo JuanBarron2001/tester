@@ -125,6 +125,8 @@ public class Robot extends TimedRobot {
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
+        teleopInit();
+        teleopPeriodic();  //this might be a way to jump into teleop during
     }
 
     /**
@@ -138,8 +140,7 @@ public class Robot extends TimedRobot {
     public void autonomousPeriodic() 
     {
         Scheduler.getInstance().run();
-        teleopInit();
-        teleopPeriodic();  //this might be a way to jump into teleop during auto
+        
         
         /*Timer a = new Timer();
         a.reset();
