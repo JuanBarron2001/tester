@@ -12,6 +12,7 @@
 package org.usfirst.frc2582.bet.subsystems;
 
 
+import org.usfirst.frc2582.bet.Robot;
 import org.usfirst.frc2582.bet.commands.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -100,8 +101,9 @@ public class box extends Subsystem {
 
     public boolean IsBallThere()
     {
-        //boolean a = !laser.get();
-        return laser.get();
+        boolean a = !laser.get();
+        Robot.blinkin.box(a);
+        return a;
         //SmartDashboard.get
     }
 

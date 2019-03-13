@@ -7,9 +7,11 @@
 
 package org.usfirst.frc2582.bet.subsystems;
 
+
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 
 /**
  * Add your docs here.
@@ -49,16 +51,30 @@ public class blinkin extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void used(boolean green)
+  public void limitSwitch(boolean b)
     {
-        if(!green)
+        if(!b)
         {
-            blinkin.set(.77);
+            blinkin.set(.15);
         }
         else
         {
             blinkin.set(color);
         }
+    }
+
+    public void box(boolean c)
+    {
+      {
+        if(!c)
+        {
+            blinkin.set(.35);
+        }
+        else
+        {
+            blinkin.set(color);
+        }
+    }
     }
 
 }

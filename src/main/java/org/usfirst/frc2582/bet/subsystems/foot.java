@@ -12,6 +12,7 @@
 package org.usfirst.frc2582.bet.subsystems;
 
 
+import org.usfirst.frc2582.bet.Robot;
 import org.usfirst.frc2582.bet.commands.*;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -221,7 +222,9 @@ public class foot extends Subsystem {
 
 
     public boolean isReverseLimit(){
-        return foot1.getSensorCollection().isRevLimitSwitchClosed();
+        Boolean hit = foot1.getSensorCollection().isRevLimitSwitchClosed();
+        Robot.blinkin.limitSwitch(hit);
+        return hit;
     }
 
     public boolean isUsed(){
