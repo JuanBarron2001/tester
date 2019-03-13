@@ -138,7 +138,9 @@ public class Robot extends TimedRobot {
     public void autonomousPeriodic() 
     {
         Scheduler.getInstance().run();
-
+        teleopInit();
+        teleopPeriodic();  //this might be a way to jump into teleop during auto
+        
         /*Timer a = new Timer();
         a.reset();
         a.start();
