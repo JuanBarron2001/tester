@@ -11,8 +11,10 @@ import org.usfirst.frc2582.bet.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class SnapAndLock extends Command {
-  public SnapAndLock() {
+public class SnapAndLock extends Command 
+{
+  public SnapAndLock() 
+  {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.drivetrain);
@@ -21,45 +23,49 @@ public class SnapAndLock extends Command {
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
+  protected void initialize() 
+  {
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() 
   {
-    Robot.limelight.update();
+    Robot.limelight.update();                 //it updates the values from the limelight
 
-    if(Robot.limelight.isThereTarget())
+    if(Robot.limelight.isThereTarget())       //it checks if the limelight sees a target
     {
-      double x = Robot.limelight.driveSet();
-      double y = Robot.limelight.steer();
+      double x = Robot.limelight.driveSet();  //sets the value for driving
+      double y = Robot.limelight.steer();     //sets the value for steering
 
-      //double x = Robot.limelight.driveSet();
-      //double y = Robot.limelight.steer();
-
-      Robot.drivetrain.driveVoltage(x, y);
+      Robot.drivetrain.driveVoltage(x, y);    //drivevoltage(differential drive) gets the drive and steer
     }
     else
     {
-      Robot.drivetrain.driveVoltage(0, 0);
+      Robot.drivetrain.driveVoltage(0, 0);    //it stops driving
     }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  protected boolean isFinished() 
+  {
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
+  protected void end() 
+  {
+
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {
+  protected void interrupted() 
+  {
+
   }
 }

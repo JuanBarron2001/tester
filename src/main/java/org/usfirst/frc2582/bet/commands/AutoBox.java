@@ -22,13 +22,15 @@ import org.usfirst.frc2582.bet.Robot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class AutoBox extends Command {
+public class AutoBox extends Command 
+{
 
-  private Boolean finished;  
-  private Boolean spit;
+  private Boolean finished;  //variable to say if its finished  
+  private Boolean spit;      //variable to say which action to preform
 
 
-  public AutoBox() {
+  public AutoBox() 
+  {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.box);
@@ -41,29 +43,7 @@ public class AutoBox extends Command {
   {
     finished = false;  //this will tell it when it is done
     spit = Robot.box.IsBallThere();  //this sets the condition of the roller
-    /*Timer b = new Timer();
-    finished = false;
-    if(Robot.box.IsBallThere())
-    {
-        Robot.box.spit();
-        while(Robot.box.IsBallThere())
-        {
-         //b.delay(.01);  //delay may affect other commands lol
-        }
-    }
-    else
-    {
-      Robot.box.suck();
-      while(!Robot.box.IsBallThere())
-      {
-        //b.delay(.01);
-      }
-    }
-    //Robot.box.stop();
-    
-    //Robot.box.close();
-    finished = true;
-  */}
+  }
   
 
   // Called repeatedly when this Command is scheduled to run
@@ -88,7 +68,8 @@ public class AutoBox extends Command {
     
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  protected boolean isFinished() 
+  {
     return finished;
   }
 
@@ -97,7 +78,7 @@ public class AutoBox extends Command {
   protected void end() 
   {
     Timer b = new Timer();
-    b.delay(.01);  //change this as needed to add extra suck or spit time
+    b.delay(.01);  //time added so it can secure the ball
     Robot.box.stop();
   }
 
@@ -105,11 +86,8 @@ public class AutoBox extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() 
-  {
-    //end();
-    System.out.println("this is finished");
-    //end();  this might still be the correct way
-    finished = true;
+  {   
+    finished = true;  //its going to call finished when its interrupted
   }
 }
 

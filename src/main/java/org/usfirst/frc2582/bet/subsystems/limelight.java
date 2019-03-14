@@ -15,7 +15,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * Add your docs here.
  */
-public class limelight extends Subsystem {
+public class limelight extends Subsystem 
+{
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -35,13 +36,14 @@ public class limelight extends Subsystem {
   }
 
   @Override
-  public void initDefaultCommand() {
+  public void initDefaultCommand() 
+  {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
     
   }
 
-  public void update()
+  public void update()      //this is to update the values of tv,tx,ty,ta
   {
     tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
     tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
@@ -49,35 +51,35 @@ public class limelight extends Subsystem {
     ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
   }
 
-  public boolean isThereTarget()
+  public boolean isThereTarget()              //this checks if there is a target
   {
-    if (tv < 1.0)
+    if (tv < 1.0)                             
       {
-        return false;
+        return false;                         //if tv < 1.0 then it returns false
       }
     else
     {
-        return true;
+        return true;                          //else it returns true
     }
   }
 
   public double steer()
   {
-    return tx * STEER_K;
+    return tx * STEER_K;                      //this returns how much steer dependent on kValue and the x - angle
   }
 
   public double drive()
   {
-    return (DESIRED_TARGET_AREA - ta) * DRIVE_K;
+    return (DESIRED_TARGET_AREA - ta) * DRIVE_K; //this returns how much to drive dependent on how much area to cover and the kValue
   }
   
   public double driveSet()
   {
-    if (drive() > MAX_DRIVE)
+    if (drive() > MAX_DRIVE)                  //if drive() is greater than the limit
       {
-          return MAX_DRIVE;
+          return MAX_DRIVE;                   //it returns the limit
       }
-      return drive();
+      return drive();                         //else it returns the drive()
   }
 
 }
