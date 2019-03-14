@@ -80,7 +80,7 @@ public class foot extends Subsystem {
     public void periodic() {
         if(!used)
         {
-        foot1.set(ControlMode.PercentOutput, .15);
+        foot1.set(ControlMode.PercentOutput, .1);
         
         }
         else

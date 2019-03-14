@@ -124,6 +124,21 @@ public class OI {
         return joy;
     }
 
+    public double geetX()
+    {
+        return joy.getX();
+    }
+
+    public double geetY()
+    {
+        return joy.getY();
+    }
+
+    public double geetZ()
+    {
+        return joy.getZ();
+    }
+
     public Joystick getgamepad() {
         return gamepad;
     }

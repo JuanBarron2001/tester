@@ -195,6 +195,7 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         Robot.box.led(Robot.box.IsBallThere());
+        Robot.drivetrain.getDistance();
         //CameraServer.getInstance().startAutomaticCapture();
         //Robot.box.printLOL();
     }

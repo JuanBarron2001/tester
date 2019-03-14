@@ -84,13 +84,17 @@ public class box extends Subsystem {
     //takes the ball in
     public void suck()
     {
-        roller.set(ControlMode.PercentOutput, -.60 );
+        roller.set(ControlMode.PercentOutput, -.50 );
+        double [] ypr = new double[3];
+        gyro.getYawPitchRoll(ypr);
+        double yea = ypr[0];
+        gyro.setYaw(90);
     }
 
     //spits the ball
     public void spit()
     {
-        roller.set(ControlMode.PercentOutput, .75);
+        roller.set(ControlMode.PercentOutput, .55);
     }
 
     public void stop()

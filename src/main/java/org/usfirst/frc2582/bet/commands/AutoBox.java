@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class AutoBox extends Command {
 
+
   private Boolean finished;  
   private Boolean spit;
 
@@ -96,6 +97,7 @@ public class AutoBox extends Command {
   @Override
   protected void end() 
   {
+    //delay(3);
     Robot.box.stop();
   }
 
@@ -109,5 +111,7 @@ public class AutoBox extends Command {
     //end();  this might still be the correct way
     finished = true;
   }
-}
 
+  private void delay(double d) {
+  }
+}
