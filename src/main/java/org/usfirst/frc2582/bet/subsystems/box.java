@@ -88,13 +88,13 @@ public class box extends Subsystem {
     //takes the ball in
     public void suck()
     {
-        roller.set(ControlMode.PercentOutput, -.60 );       //sets roller to intake at .6 volts in the negative direction
+        roller.set(ControlMode.PercentOutput, .5 );       //sets roller to intake at .6 volts in the negative direction
     }
 
     //spits the ball
     public void spit()
     {
-        roller.set(ControlMode.PercentOutput, .75);         //sets roller to outtake at .75 volts in the possitive direction
+        roller.set(ControlMode.PercentOutput, -.75);         //sets roller to outtake at .75 volts in the possitive direction
     }
 
     public void stop()

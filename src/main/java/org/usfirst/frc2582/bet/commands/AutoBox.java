@@ -34,7 +34,7 @@ public class AutoBox extends Command
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.box);
-      
+    requires(Robot.tongueSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -53,6 +53,11 @@ public class AutoBox extends Command
     if(Robot.box.IsBallThere() != spit)  //when spit doesnt match with condition then it has 'tripped'
     {                                    //the sensor
       finished = true;
+    }
+
+    if(!spit) //this might need to move to periodic
+    {
+      Robot.tongueSubsystem.tongueOut();
     }
     
     if(spit)
@@ -78,8 +83,9 @@ public class AutoBox extends Command
   protected void end() 
   {
     Timer b = new Timer();
-    b.delay(.01);  //time added so it can secure the ball
+    b.delay(.1);  //time added so it can secure the ball
     Robot.box.stop();
+    //Robot.tongueSubsystem.tongueIn();
   }
 
   // Called when another command which requires one or more of the same

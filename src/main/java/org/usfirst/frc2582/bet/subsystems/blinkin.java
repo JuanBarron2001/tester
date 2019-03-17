@@ -22,12 +22,12 @@ public class blinkin extends Subsystem
   // here. Call these from Commands.
 
   private Spark blinkin;            //it initialize a spark
-  private double color;             //it inititalize a double for color arrangements
+  private double color = .91;             //it inititalize a double for color arrangements
 
   public blinkin(Alliance a)        //it is a constructor for blinkin and it needs an alliance
   {
     blinkin = new Spark(0);         //it creates a spark in pwm 0
-
+    /*
     if(a.equals(Alliance.Blue))     //it checks if alliance is blue
     {
       color = .87;                  //it sets color to .87(blue)
@@ -40,8 +40,8 @@ public class blinkin extends Subsystem
     {
       color = .99;                  //it sets color to .99(black) if it doesnt match an alliance
     }
-
-    blinkin.set(color);             //it sets blikin to color
+    */
+    blinkin.set(.91);             //it sets blikin to color
   }
 
   
@@ -55,7 +55,7 @@ public class blinkin extends Subsystem
 
   public void limitSwitch(boolean b)  //it takes a boolean to check if limitstich is pressed
   {
-    if(!b)
+    if(b)
       {
         blinkin.set(.15);             //it sets blinkin to .15(strobe color 1)
       }

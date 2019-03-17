@@ -68,6 +68,7 @@ public class OI {
     public JoystickButton button10;
     public JoystickButton snap;
     public JoystickButton manFoot;
+    public JoystickButton ledSwitch;
 
 
 
@@ -121,6 +122,9 @@ public class OI {
 
         manFoot = new JoystickButton(joy, 7);       //sets manFoot to button7
         manFoot.whileHeld(new jump());              //while held it does jump
+
+        //ledSwitch = new JoystickButton(joy, 2);       //sets ledSwitch to button7
+        //ledSwitch.whenPressed(new ledSwitch());;      //when pressed it changes led light
         
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

@@ -30,9 +30,11 @@ public class limelight extends Subsystem
   double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
   double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
 
+  private boolean ledOn;
+
   public limelight()
   {
-    
+    ledOn = true;
   }
 
   @Override
@@ -82,4 +84,20 @@ public class limelight extends Subsystem
       return drive();                         //else it returns the drive()
   }
 
+  public void ledOn()//this is to turn on led lights
+  {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+    ledOn = true;
+  }
+
+  public void ledOff()//this is to turn off led lights
+  {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+    ledOn = false;
+  }
+
+  public boolean getIsOn()
+  {
+    return ledOn;
+  }
 }

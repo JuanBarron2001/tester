@@ -54,9 +54,10 @@ public class joydrive extends Command
 
         double y = (joys.getY());           //sets y into a value got from joystick in the y - axis (drive)
 
-        double z = joys.getZ() * .5;        //sets z into a value got from joystick in the z - axis (steer)
+        double z = joys.getZ();        //sets z into a value got from joystick in the z - axis (steer)
 
-        Robot.drivetrain.driveVoltage(-y,z);//sets driveVoltage(differential drive)
+        double chan = (z + joys.getX())/1.75;
+        Robot.drivetrain.driveVoltage(-y,chan);//sets driveVoltage(differential drive)
     }
 
     // Make this return true when this Command no longer needs to run execute()
