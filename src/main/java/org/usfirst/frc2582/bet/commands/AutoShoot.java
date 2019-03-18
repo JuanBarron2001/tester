@@ -41,7 +41,7 @@ public class AutoShoot extends Command
     Robot.triangle.downT(); //triangle goes down
     a.delay(.75);           //delay for .75 secs
     Robot.pistons.push();   //pistons push out the hatch
-    a.delay(.5);            //delay for .5 secs
+    a.delay(.55);            //delay for .5 secs
     Robot.pistons.off();    //pistons retract
 
     done = true;            //sets it to true

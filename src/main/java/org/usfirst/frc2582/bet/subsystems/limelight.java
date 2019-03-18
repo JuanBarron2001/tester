@@ -84,6 +84,11 @@ public class limelight extends Subsystem
       return drive();                         //else it returns the drive()
   }
 
+  public double getArea()
+  {
+    return ta;
+  }
+
   public void ledOn()//this is to turn on led lights
   {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
