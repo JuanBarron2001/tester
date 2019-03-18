@@ -128,8 +128,8 @@ public class Robot extends TimedRobot
         autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
-        teleopInit();
-        teleopPeriodic();  //this might be a way to jump into teleop during
+        //teleopInit();
+        //teleopPeriodic();  //this might be a way to jump into teleop during
     }
 
     /**
@@ -148,7 +148,7 @@ public class Robot extends TimedRobot
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        Robot.triangle.upT();
+        //Robot.triangle.upT();
     }
 
     /**

@@ -17,6 +17,7 @@ public class awesomeAuto extends Command {
   Timer a;
   AutoShoot b;
   SnapAndLock c;
+  boolean finished;
 
   public awesomeAuto() 
   {
@@ -33,6 +34,7 @@ public class awesomeAuto extends Command {
   {
     Robot.gyro.zeroOut();
     Timer a = new Timer();
+    finished = false;
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -65,6 +67,8 @@ public class awesomeAuto extends Command {
     snapAndLock();
 
     AutoShoot();
+
+    finished = true;
   }
 
   private void turnAngle(double angle)
@@ -91,12 +95,12 @@ public class awesomeAuto extends Command {
     b.execute();
     b.end();
   }
-  
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() 
   {
-    return false;
+    return finished;
   }
 
   // Called once after isFinished returns true

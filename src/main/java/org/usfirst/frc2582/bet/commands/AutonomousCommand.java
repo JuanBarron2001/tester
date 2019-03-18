@@ -47,7 +47,10 @@ public class AutonomousCommand extends Command
     @Override
     protected void execute() 
     {
-
+        awesomeAuto a = new awesomeAuto();
+        a.initialize();
+        a.execute();
+        a.end();
     }
 
     // Make this return true when this Command no longer needs to run execute()
