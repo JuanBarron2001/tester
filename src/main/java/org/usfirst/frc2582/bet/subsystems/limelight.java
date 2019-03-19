@@ -7,6 +7,8 @@
 
 package org.usfirst.frc2582.bet.subsystems;
 
+import org.usfirst.frc2582.bet.Robot;
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -24,6 +26,8 @@ public class limelight extends Subsystem
   final double DRIVE_K = 0.1;                    // how hard to drive fwd toward the target
   final double DESIRED_TARGET_AREA = 13.0;        // Area of the target when the robot reaches the wall
   final double MAX_DRIVE = 0.6;                   // Simple speed limit so we don't drive too fast
+  final double X_TARGET_SETPOINT = 0.0;             // desired tx position
+
 
   double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
   double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
@@ -83,6 +87,16 @@ public class limelight extends Subsystem
       }
       return drive();                         //else it returns the drive()
   }
+
+
+  public void autoAlignLL(double move, double kF, double kP)
+  {
+    double targetError = (X_TARGET_SETPOINT - tx);
+    kF = Math.copySign(kF,targetError);
+    double turningValue = targetError * -kP - kF;
+    Robot.drivetrain.driveVoltage(turningValue, move);
+  }
+
 
   public void ledOn()//this is to turn on led lights
   {
