@@ -12,6 +12,7 @@ import com.ctre.phoenix.sensors.PigeonIMU;
 import org.usfirst.frc2582.bet.Robot;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -47,6 +48,8 @@ public class gyro extends Subsystem
   public double getX()
   {
     getYPR();
+    System.out.println(ypr[0]);
+    SmartDashboard.putNumber("X", ypr[0]);
     return ypr[0];
   }
 

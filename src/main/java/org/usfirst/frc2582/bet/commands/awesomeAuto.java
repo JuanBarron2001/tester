@@ -34,6 +34,7 @@ public class awesomeAuto extends Command {
   {
     Robot.gyro.zeroOut();
     Timer a = new Timer();
+    setTimeout(15);
     finished = false;
   }
 
@@ -73,9 +74,9 @@ public class awesomeAuto extends Command {
 
   private void turnAngle(double angle)
   {
-    while(Robot.gyro.getX()%360 < angle)
+    while(Robot.gyro.getX() < angle)
     {                  
-      Robot.drivetrain.driveVoltage(0, .125);
+      Robot.drivetrain.driveVoltage(0, -.125);
     }
   }
 

@@ -157,6 +157,7 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
+        gyro.getX();
         Scheduler.getInstance().run();
     }
 }
