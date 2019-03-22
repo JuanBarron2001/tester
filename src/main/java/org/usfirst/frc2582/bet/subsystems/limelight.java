@@ -20,10 +20,10 @@ public class limelight extends Subsystem
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  final double STEER_K = 0.01;                    // how hard to turn toward the target
-  final double DRIVE_K = 0.05;                    // how hard to drive fwd toward the target
-  final double DESIRED_TARGET_AREA = 20;//13        // Area of the target when the robot reaches the wall
-  final double MAX_DRIVE = 0.5;                   // Simple speed limit so we don't drive too fast
+  final double STEER_K = 0.05;                    // how hard to turn toward the target
+  final double DRIVE_K = 0.1;                   // how hard to drive fwd toward the target
+  final double DESIRED_TARGET_AREA = 14;//13        // Area of the target when the robot reaches the wall
+  final double MAX_DRIVE = 0.6;                   // Simple speed limit so we don't drive too fast
 
   double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
   double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
@@ -55,7 +55,7 @@ public class limelight extends Subsystem
 
   public boolean isThereTarget()              //this checks if there is a target
   {
-    if (tv < 1.0)                             
+    if (tv < 0)                             
       {
         return false;                         //if tv < 1.0 then it returns false
       }

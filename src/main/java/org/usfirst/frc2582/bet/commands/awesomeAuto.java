@@ -26,6 +26,8 @@ public class awesomeAuto extends Command {
     requires(Robot.drivetrain);
     requires(Robot.limelight);
     requires(Robot.gyro);
+    requires(Robot.pistons);
+    requires(Robot.triangle);
   }
 
   // Called just before this Command runs the first time
@@ -33,8 +35,8 @@ public class awesomeAuto extends Command {
   protected void initialize() 
   {
     Robot.gyro.zeroOut();
-    Timer a = new Timer();
-    setTimeout(15);
+    a = new Timer();
+    setTimeout(300);
     finished = false;
   }
 
@@ -45,7 +47,9 @@ public class awesomeAuto extends Command {
     Robot.drivetrain.driveVoltage(-.25, 0);         //drive off
     a.delay(2);
 
-    turnAngle(180);
+    turnAngle(157);
+
+    Robot.drivetrain.driveVoltage(0, 0);
 
     snapAndLock();
 
@@ -74,27 +78,57 @@ public class awesomeAuto extends Command {
 
   private void turnAngle(double angle)
   {
-    while(Robot.gyro.getX() < angle)
-    {                  
-      Robot.drivetrain.driveVoltage(0, -.125);
-    }
+    //if(Robot.gyro.getX() < angle)
+    //{
+      while(Robot.gyro.getX() < angle)
+      {                  
+        Robot.drivetrain.driveVoltage(0, -.5);
+      }
+    //}
+    //else
+    //{
+      //while(Robot.gyro.getX() < angle)
+      //{                  
+        //Robot.drivetrain.driveVoltage(0, -.125);
+      //}
+    
+    
   }
 
   private void snapAndLock()
   {
-    c.initialize();                                 //snap and lock
-    while(Robot.limelight.getArea() < 20)
+    Robot.limelight.update();                 //it updates the values from the limelight
+    while(Robot.limelight.getArea() < 10)
     {
-      c.execute();
+    if(Robot.limelight.isThereTarget())       //it checks if the limelight sees a target
+    {
+      double x = Robot.limelight.driveSet();  //sets the value for driving
+      double y = Robot.limelight.steer();     //sets the value for steering
+
+      Robot.drivetrain.driveVoltage(x, y);    //drivevoltage(differential drive) gets the drive and steer
     }
-    c.end();
+    else
+    {
+      Robot.drivetrain.driveVoltage(0, 0);    //it stops driving
+    }
+    if(Robot.drivetrain.getDistance() < 3)
+    {
+      Robot.drivetrain.driveVoltage(0, 0);
+      break;
+    }
+  }
   }
 
   private void AutoShoot()
   {
-    b.initialize();                                 //auto shoot
-    b.execute();
-    b.end();
+    Timer b = new Timer();  //creates a timer for actions to be sequenced
+
+    Robot.triangle.downT(); //triangle goes down
+    b.delay(.75);           //delay for .75 secs
+    Robot.pistons.push();   //pistons push out the hatch
+    b.delay(.55);            //delay for .5 secs
+    Robot.pistons.off();    //pistons retract
+
   }
 
   // Make this return true when this Command no longer needs to run execute()

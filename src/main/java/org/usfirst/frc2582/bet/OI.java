@@ -69,6 +69,7 @@ public class OI {
     public JoystickButton snap;
     public JoystickButton manFoot;
     public JoystickButton ledSwitch;
+    public JoystickButton ultraSwap;
 
 
 
@@ -122,6 +123,9 @@ public class OI {
 
         manFoot = new JoystickButton(joy, 7);       //sets manFoot to button7
         manFoot.whileHeld(new jump());              //while held it does jump
+
+        ultraSwap = new JoystickButton(joy, 5);
+        ultraSwap.whileHeld(new ultraAssist());
 
         //ledSwitch = new JoystickButton(joy, 2);       //sets ledSwitch to button7
         //ledSwitch.whenPressed(new ledSwitch());;      //when pressed it changes led light

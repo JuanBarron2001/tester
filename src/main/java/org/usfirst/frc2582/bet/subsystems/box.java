@@ -105,7 +105,7 @@ public class box extends Subsystem {
     public boolean IsBallThere()
     {
         boolean a = !laser.get();                           //makes a boolean to get laser status
-        Robot.blinkin.box(a);                               //sets blinkin to the boolean
+        //Robot.blinkin.box(a);                               //sets blinkin to the boolean
         return a;                                           //returns the state of the laser
     }
 
