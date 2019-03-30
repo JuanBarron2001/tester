@@ -109,8 +109,8 @@ public class OI {
         button8.whenPressed(new TongueOutCommand());//when pressed the tongue goes out
         //button8.cancelWhenActive(new AutoBox());
 
-        button9 = new JoystickButton(gamepad, 9);   //sets button9 to 'LEFT JOYSTICK'
-        button9.whenPressed(new MotionMagicClimbCommand());//magic
+        //button9 = new JoystickButton(gamepad, 9);   //sets button9 to 'LEFT JOYSTICK'
+        //button9.whenPressed(new MotionMagicClimbCommand());//magic
 
         button10 = new JoystickButton(gamepad, 10); //sets button10 to 'RIGHT JOYSTICK'
         button10.whenPressed(new AutoBox());        //when pressed it does auto
