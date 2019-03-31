@@ -22,7 +22,7 @@ public class blinkin extends Subsystem
   // here. Call these from Commands.
 
   private Spark blinkin;            //it initialize a spark
-  private double color = .91;             //it inititalize a double for color arrangements
+  private double color;             //it inititalize a double for color arrangements
 
   public blinkin(Alliance a)        //it is a constructor for blinkin and it needs an alliance
   {
