@@ -43,7 +43,7 @@ public class arm extends Subsystem
   public static final int ARM_REVERSE_LIMIT = -10;
   public static final int UP_POSITION = 0;
   public static final int DOWN_POSITION = 4800;
-  public static final int ROCKET_POSITION =3600;
+  public static final int ROCKET_POSITION =3300;
   public static final int DEPOT_POSITION = 4700;
 
   public static final int ARM_0_DEG =3700;
