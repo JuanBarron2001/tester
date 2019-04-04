@@ -34,20 +34,20 @@ public class arm extends Subsystem
   private DigitalInput limit;
 
   private int targetPosition = 0; //postion arm is currently targeting
-  private double horizontalHoldOutput = .125;//amount of power needed to hold arm horizontally
+  private double horizontalHoldOutput = .25;//amount of power needed to hold arm horizontally
 
   //**********************************/
   //NEED TO FIGURE OUT THESE ENCODER VALUES
   //**********************************/
-  public static final int ARM_FORWARD_LIMIT = 1000;
-  public static final int ARM_REVERSE_LIMIT = -2000;
+  public static final int ARM_FORWARD_LIMIT = 4900;
+  public static final int ARM_REVERSE_LIMIT = -10;
   public static final int UP_POSITION = 0;
-  public static final int DOWN_POSITION = -2000;
-  public static final int ROCKET_POSITION =-1500;
-  public static final int DEPOT_POSITION = -1800;
+  public static final int DOWN_POSITION = 4800;
+  public static final int ROCKET_POSITION =3600;
+  public static final int DEPOT_POSITION = 4700;
 
-  public static final int ARM_0_DEG =100;
-  public static final int ARM_90_DEG = 1100;
+  public static final int ARM_0_DEG =3700;
+  public static final int ARM_90_DEG = 1400;
 
 
   /**
@@ -81,15 +81,15 @@ public class arm extends Subsystem
   public void armMove(double y)
   {
       //stop();
-      arm.set(ControlMode.PercentOutput, y * .5);
+      arm.set(ControlMode.PercentOutput, y * 0.6);
       //double velocity = this.arm.getSelectedSensorVelocity(0);
       //SmartDashboard.putNumber("velocity", velocity);
   }
 
   public void motionMagicArm()
   {
-  arm.set(ControlMode.MotionMagic, targetPosition); //uses motion magic of the arm
-  //arm.set(ControlMode.MotionMagic,targetPosition, DemandType.ArbitraryFeedForward, getFeedForward() );
+  //arm.set(ControlMode.MotionMagic, targetPosition); //uses motion magic of the arm
+  arm.set(ControlMode.MotionMagic,targetPosition, DemandType.ArbitraryFeedForward, getFeedForward() );
   
   }
 
@@ -132,20 +132,20 @@ public class arm extends Subsystem
     // getAngle() returns degrees
     double theta = Math.toRadians(getAngle());
   
-    SmartDashboard.putNumber("Angle", getAngle());
+    //SmartDashboard.putNumber("Angle", getAngle());
   
     // get a range of 0 to 1 to multiply by feedforward.
     // when in horizontal position, value should be 1
     // when in vertical up or down position, value should be 0 
     double gravityCompensation = Math.cos(theta);
   
-    SmartDashboard.putNumber("Gravity Compensation", gravityCompensation);
+    //SmartDashboard.putNumber("Gravity Compensation", gravityCompensation);
   
     // horizontalHoldOutput is the minimum power required to hold the arm up when horizontal
     // this is a range of 0-1, in our case it was .125 throttle required to keep the arm up
-    double feedForward = gravityCompensation * horizontalHoldOutput;
+    double feedForward = -1*gravityCompensation * horizontalHoldOutput;
   
-    SmartDashboard.putNumber("Feed Forward", feedForward);
+    //SmartDashboard.putNumber("Feed Forward", feedForward);
   
    return feedForward;
   
@@ -193,7 +193,7 @@ public class arm extends Subsystem
 
     //Sets encoder phase this should be where the encoder counter goes up when the talon lights are green and down when lights are red
     //switch the boolan if it is counting backwards.  Motion magic will go haywire if this is not correct    
-    arm.setSensorPhase(true);
+    arm.setSensorPhase(false);
     arm.setInverted(false);
 
     //Configure Talon to clear sensor position on Reverse  Limit "1 clears it 0 does not"
@@ -207,8 +207,8 @@ public class arm extends Subsystem
     /* set the peak and nominal outputs */
     arm.configNominalOutputForward(0, kTimeoutMs);
     arm.configNominalOutputReverse(0, kTimeoutMs);
-    arm.configPeakOutputForward(0.5, kTimeoutMs);
-    arm.configPeakOutputReverse(-0.5, kTimeoutMs);
+    arm.configPeakOutputForward(0.8, kTimeoutMs);
+    arm.configPeakOutputReverse(-0.8, kTimeoutMs);
 
     /* set closed loop gains in slot0 - see documentation */
     arm.selectProfileSlot(kSlotIdx, kPIDLoopIdx);
@@ -218,7 +218,7 @@ public class arm extends Subsystem
     arm.config_kD(0, 0, kTimeoutMs);
 
     /* set acceleration and vcruise velocity - see documentation */
-    arm.configMotionCruiseVelocity(200, kTimeoutMs);
+    arm.configMotionCruiseVelocity(400, kTimeoutMs);
     arm.configMotionAcceleration(200, kTimeoutMs);
 
     /* zero the sensor */
@@ -234,11 +234,13 @@ public class arm extends Subsystem
     arm.configReverseSoftLimitEnable(false);
     arm.configReverseSoftLimitThreshold(ARM_REVERSE_LIMIT);
 
+
+
     arm.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector,
                                     LimitSwitchNormal.NormallyOpen,
                                     kTimeoutMs);
 
-
+    
   }
 
 

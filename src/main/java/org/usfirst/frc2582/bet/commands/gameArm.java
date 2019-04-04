@@ -11,6 +11,7 @@ import org.usfirst.frc2582.bet.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class gameArm extends Command {
   public gameArm() 
@@ -32,7 +33,8 @@ public class gameArm extends Command {
   protected void execute() 
   {
     Joystick game = Robot.oi.getgamepad();
-    double y = game.getRawAxis(0);
+    double y = game.getRawAxis(1);
+    SmartDashboard.putNumber("Manual Arm Power", y);
     Robot.arm.armMove(y);
   }
 

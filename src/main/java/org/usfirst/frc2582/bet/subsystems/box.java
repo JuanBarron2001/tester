@@ -90,13 +90,13 @@ public class box extends Subsystem {
     public void periodic() 
     {
         // Put code here to be run every loop
-
+        roller.set(ControlMode.PercentOutput,.2);
     }
 
     //takes the ball in
     public void suck()
     {
-        roller.set(ControlMode.PercentOutput, .9 );       //sets roller to intake at .6 volts in the negative direction
+        roller.set(ControlMode.PercentOutput, .7 );       //sets roller to intake at .6 volts in the negative direction
     }
 
     //spits the ball
