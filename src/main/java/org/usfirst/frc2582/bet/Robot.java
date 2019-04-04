@@ -113,7 +113,8 @@ public class Robot extends TimedRobot
         SmartDashboard.putBoolean("Foot Limit", Robot.foot.isReverseLimit());
         //SmartDashboard.putNumber("Manual Arm Power", Robot.oi.gamepad.getRawAxis(0));
         SmartDashboard.putNumber("FeedForward Value", Robot.arm.getFeedForward());
-
+        SmartDashboard.putBoolean("limit arm", Robot.arm.isUp());
+    
     }
     /**
      * This function is called when the disabled button is hit.

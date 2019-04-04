@@ -150,7 +150,12 @@ public class arm extends Subsystem
    return feedForward;
   
   }
-
+  public boolean isUp()
+    {
+        Boolean hit = arm.getSensorCollection().isRevLimitSwitchClosed();     //it sets the value of hit if closes the limit switch
+                                                 //it sets the blinkin to the value of hit
+        return hit;                                                             //it returns the value of hit
+    }
 
   /*public void armSet(int pos)
   {
