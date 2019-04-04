@@ -52,6 +52,7 @@ public class Robot extends TimedRobot
     public static pistons pistons;
     public static limelight limelight;
     public static blinkin blinkin;
+    public static arm arm;
     public static TongueSubsystem tongueSubsystem;
     
     public static DriverStation ds = DriverStation.getInstance();  //this is to get value from driver station
@@ -76,6 +77,7 @@ public class Robot extends TimedRobot
         limelight = new limelight();  //this is camera
         tongueSubsystem = new TongueSubsystem();
         blinkin = new blinkin(ds.getAlliance());
+        arm = new arm();
         CameraServer.getInstance().startAutomaticCapture();
         SmartDashboard.putNumber("Arm Position", Robot.foot.getFootPosition());
     

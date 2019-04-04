@@ -11,60 +11,40 @@ import org.usfirst.frc2582.bet.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ManualJumpCommand extends Command 
-{
-  public ManualJumpCommand() 
-  {
-    requires(Robot.foot);
+public class armUp extends Command {
+  public armUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.arm);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() 
-  {
-    
+  protected void initialize() {
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() 
-  {
-    double speed = 0;//Robot.oi.gamepad.getY();   //sets speed to gamepad y - axis
-    if (Math.abs(speed)<.1)
-    {
-      if(!Robot.foot.isUsed())    //should apply small lifting pressue as long jump has not been pressed or manual mode isnt in use
-      {
-        speed=.1;                 //sets speed to .1
-      }
-      else
-      {
-        speed=0;                  //sets speed to .0
-      }
-    }
-    Robot.foot.manualJump(speed); //sets the foot speed to the speed from this method
+  protected void execute() {
+    //Robot.arm.armSet(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() 
-  {
+  protected boolean isFinished() {
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() 
-  {
-
+  protected void end() {
+    //Robot.arm.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() 
-  {
-    
+  protected void interrupted() {
+    end();
   }
 }

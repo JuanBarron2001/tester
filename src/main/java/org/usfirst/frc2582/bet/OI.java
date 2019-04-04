@@ -15,6 +15,7 @@ import org.usfirst.frc2582.bet.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 
 import org.usfirst.frc2582.bet.subsystems.*;
 
@@ -69,6 +70,9 @@ public class OI {
     public JoystickButton snap;
     public JoystickButton manFoot;
     public JoystickButton ledSwitch;
+    public POVButton up;
+    public POVButton right;
+    public POVButton down;
 
 
 
@@ -115,6 +119,15 @@ public class OI {
         button10 = new JoystickButton(gamepad, 10); //sets button10 to 'RIGHT JOYSTICK'
         button10.whenPressed(new AutoBox());        //when pressed it does auto
 
+        // POV ( DPad ) Buttons
+        //up = new POVButton(gamepad, 0);             //sets up to the up button on the 'DPad'
+        //up.whenPressed(new armUp()); //create a command               //when pressed, the arm goes into the 'up' position
+
+        //right = new POVButton(gamepad, 90);         //sets right to the right button on the 'DPad'
+        //right.whenPressed(new command); //create a command            //when pressed, the arm goes into the 'low rocket' position
+
+        //down = new POVButton(gamepad, 180);         //sets down to the down button on the 'DPad'
+        //down.whenPressed(new command); //create a command             //when pressed, the arm goes into the 'down' position
 
         //joystic buttons
         snap = new JoystickButton(joy, 1);          //sets snap to trigger
