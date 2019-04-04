@@ -11,9 +11,9 @@ import org.usfirst.frc2582.bet.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class armUp extends Command {
+public class armDown extends Command {
   
-  public armUp() {
+  public armDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.arm);
@@ -22,7 +22,7 @@ public class armUp extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.arm.setTargetPosition(Robot.arm.UP_POSITION);
+    Robot.arm.setTargetPosition(Robot.arm.DOWN_POSITION);
   }
 
   // Called repeatedly when this Command is scheduled to run
